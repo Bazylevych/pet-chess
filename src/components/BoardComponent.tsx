@@ -1,9 +1,25 @@
+import React from "react";
+import { Board } from "../models/Board";
 import CellComponent from "./CellComponent";
 
-export default function BoardComponent() {
+interface BoardProps {
+  board: Board;
+  setBoard: (board: Board) => void;
+}
+
+export default function BoardComponent({
+  board,
+  setBoard,
+}: BoardProps): JSX.Element {
   return (
     <div className="board">
-      <CellComponent />
+      {board.cells.map((row, index) => (
+        <React.Fragment key={index}>
+          {row.map((cell) => (
+            <CellComponent cell={cell} key={cell.id} />
+          ))}
+        </React.Fragment>
+      ))}
     </div>
   );
 }
