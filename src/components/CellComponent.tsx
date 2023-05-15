@@ -5,5 +5,7 @@ interface CellProps {
 }
 
 export default function CellComponent({ cell }: CellProps): JSX.Element {
-  return <div className={["cell", cell.color].join(" ")}>cell</div>;
+  return (
+    <div className={["cell", cell.color].join(" ")}>{/* {cell.figure} */}</div>
+  );
 }
